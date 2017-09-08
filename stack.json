@@ -72,8 +72,7 @@
 		"WaitHandle": {
 			"Type": "AWS::CloudFormation::WaitConditionHandle"
 		}
-	}
-},
+	},
     "Outputs": {
         "InstanceId": {
             "Description": "InstanceId of the newly created EC2 instance",
@@ -109,3 +108,4 @@
             }
         }
     }
+}
