@@ -77,14 +77,14 @@
         "InstanceId": {
             "Description": "InstanceId of the newly created EC2 instance",
             "Value": {
-                "Ref": "EC2Instance"
+                "Ref": "testInstance"
             }
         },
         "AZ": {
             "Description": "Availability Zone of the newly created EC2 instance",
             "Value": {
                 "Fn::GetAtt": [
-                    "EC2Instance",
+                    "testInstance",
                     "AvailabilityZone"
                 ]
             }
@@ -93,7 +93,7 @@
             "Description": "Public DNSName of the newly created EC2 instance",
             "Value": {
                 "Fn::GetAtt": [
-                    "EC2Instance",
+                    "testInstance",
                     "PublicDnsName"
                 ]
             }
@@ -102,7 +102,7 @@
             "Description": "Public IP address of the newly created EC2 instance",
             "Value": {
                 "Fn::GetAtt": [
-                    "EC2Instance",
+                    "testInstance",
                     "PublicIp"
                 ]
             }
