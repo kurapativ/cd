@@ -73,7 +73,7 @@
          "Type" : "AWS::EC2::EIPAssociation",
          "Properties" : {
              "InstanceId" : { "Ref" : "testInstance" },
-             "EIP" : "eipalloc-e2f428df"
+             "EIP" : "34.213.253.180"
             }
         },
 		"WaitHandle": {
