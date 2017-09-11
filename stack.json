@@ -60,6 +60,26 @@
 					"Fn::Base64": {
 						"Fn::Join": ["", [
 							"#!/bin/bash -v\n",
+							"echo 'env=::env::\n",
+							"cmp=::cmp::' > /tmp/envdata\n",
+							"sudo yum -y install wget\n",
+							"sudo sed -i \"s#Defaults.*requiretty#Defaults\\!requiretty#g\" /etc/sudoers\n",
+                                                        "sudo cd /tmp\n",
+							"sudo echo 'Downloading the rpm'\n",
+							"sudo wget https://packages.chef.io/files/current/chef/13.4.18/el/7/chef-13.4.18-1.el7.x86_64.rpm\n",
+							"sudo rpm -ivh *.rpm\n",
+							"sudo mkdir /etc/chef\n",
+							"cd /etc/chef\n",
+							"wget https://s3-us-west-2.amazonaws.com/cdchefdocs/client.rb\n",
+							"wget https://s3-us-west-2.amazonaws.com/cdchefdocs/knife.rb\n",
+							"wget https://s3-us-west-2.amazonaws.com/cdchefdocs/vidya1709.pem\n",
+							"sudo chmod 400 vidya1709.pem\n",
+							"sudo chef-client -o recipe[test::docs_example]\n",
+							"cd /opt/tomcat_docs/webapps\n",
+							"sudo wget http://34.214.102.11:8081/nexus/service/local/repositories/releases/content/com/mkyong/CounterWebApp/1.0/CounterWebApp-1.0.war\n",
+							"sudo cd /tomcat_docs/bin\n",
+							"./shutdown.sh\n",
+							"./startup.sh\n",
 							"/opt/aws/bin/cfn-signal -e 0 -r \"ChefClient setup complete\" '", {
 							"Ref": "WaitHandle"
 							}, "'\n"
